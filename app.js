@@ -5,13 +5,13 @@ const logger = require('morgan');
 const cors = require('cors');
 const { Sequelize } = require('sequelize');
 const authRouter = require('./routes/auth');
-const clientsRouter = require('./routes/clients');
-const repairsRouter = require('./routes/repairs');
+const ordersRouter = require('./routes/order');
+const parfumesRouter = require('./routes/parfume');
 const authRequired = require('./middleware/authRequired');
 
 const app = express();
 
-const sequelize = new Sequelize('postgresql://ul1e6bvbtulgghqikapt:HBmabTXjQKj9cuvnVQJJMMGcnDfwqf@bok8olbwcb3wgp8da8ze-postgresql.services.clever-cloud.com:50013/bok8olbwcb3wgp8da8ze', {
+const sequelize = new Sequelize('postgresql://uxlnpg4ykz3j9bcpxmiy:JvSeEcRrqQL3iYSG59FJaR0QQusd8e@bsuedgclroq7zxra2qkr-postgresql.services.clever-cloud.com:50013/bsuedgclroq7zxra2qkr', {
     dialect: 'postgres',
     logging: console.log,
     dialectOptions: {
@@ -22,7 +22,7 @@ const sequelize = new Sequelize('postgresql://ul1e6bvbtulgghqikapt:HBmabTXjQKj9c
     },
 });
 
-const { User, Client, Repair } = require('./models');
+const { User, Order, Parfume } = require('./models');
 
 sequelize.sync({ alter: true })
     .then(() => console.log('Models synchronized with database'))
@@ -38,13 +38,13 @@ app.use(cors({
 }));
 app.use('/css', express.static(path.join(__dirname, 'css')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
-app.use('/clients', express.static(path.join(__dirname, 'views', 'clients')));
-app.use('/repairs', express.static(path.join(__dirname, 'views', 'repairs')));
+app.use('/orders', express.static(path.join(__dirname, 'views', 'orders')));
+app.use('/parfumes', express.static(path.join(__dirname, 'views', 'parfumes')));
 app.use('/js', express.static(path.join(__dirname, 'js')));
 
 app.use('/auth', authRouter);
-app.use('/', clientsRouter);
-app.use('/', repairsRouter);
+app.use('/', ordersRouter);
+app.use('/', parfumesRouter);
 
 app.get('/', authRequired, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));

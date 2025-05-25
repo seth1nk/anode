@@ -18,9 +18,9 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #1a1a1a, #2c3e50); /* Темный градиент для техно-стиля */
-    color: #e0e0e0; /* Светло-серый текст */
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #fff3e0, #ffcc80) !important; /* Кремово-персиковый градиент */
+    color: #2d1b00 !important; /* Тёмно-коричневый текст */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -36,8 +36,8 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(90deg, #2c3e50, #3498db); /* Синий техно-градиент */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(90deg, #ff8c00, #e65100) !important; /* Оранжевый градиент */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
     padding: 15px 20px;
     display: flex;
     justify-content: center;
@@ -47,22 +47,26 @@ body {
 }
 
 .pets-link,
-.nutrition-link {
-    color: #e0e0e0; /* Светло-серый текст */
+.nutrition-link,
+.jewelry-link,
+.orders-link {
+    color: #ffffff !important; /* Белый текст */
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     padding: 10px 20px;
-    border-radius: 8px;
-    background: rgba(52, 152, 219, 0.2); /* Полупрозрачный синий фон */
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.2) !important; /* Полупрозрачный фон */
     transition: all 0.3s ease;
     text-decoration: none;
 }
 
 .pets-link:hover,
-.nutrition-link:hover {
-    background: rgba(52, 152, 219, 0.4); /* Ярче при наведении */
-    color: #ffffff;
+.nutrition-link:hover,
+.jewelry-link:hover,
+.orders-link:hover {
+    background: rgba(255, 171, 64, 0.3) !important; /* Яркий оранжевый при наведении */
+    color: #ffab40 !important;
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -75,7 +79,9 @@ body {
     }
 
     .pets-link,
-    .nutrition-link {
+    .nutrition-link,
+    .jewelry-link,
+    .orders-link {
         font-size: 1rem;
         padding: 8px 15px;
     }
@@ -98,77 +104,82 @@ button {
     margin: 0 auto 20px auto;
     max-width: 100px;
     height: auto;
+    border: 2px solid #fff5e0 !important; /* Кремовый бордер */
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Контейнер приложения */
 .app-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 24px;
 }
 
 /* Заголовок страницы */
 .page-title {
     text-align: center;
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #ffffff; /* Белый текст для контраста */
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #2d1b00 !important;
+    background: linear-gradient(90deg, #ff8c00, #e65100) !important; /* Оранжевый градиент */
+    padding: 12px;
+    border-radius: 12px;
 }
 
 /* Форма */
 .form-container {
-    background: rgba(44, 62, 80, 0.95); /* Темно-синий прозрачный фон */
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    padding: 20px;
+    background: rgba(255, 245, 224, 0.9) !important; /* Полупрозрачный кремовый фон */
+    border-radius: 12px !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+    padding: 24px;
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
 }
 
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 .form-label {
     display: block;
     margin-bottom: 5px;
-    font-weight: 500;
-    color: #e0e0e0; /* Светло-серый текст */
+    font-weight: 600;
+    color: #2d1b00 !important; /* Тёмно-коричневый текст */
 }
 
 .form-input {
+    background: rgba(255, 204, 128, 0.2) !important; /* Полупрозрачный персиковый фон */
+    color: #2d1b00 !important;
+    border: 1px solid rgba(230, 81, 0, 0.4) !important;
+    border-radius: 6px !important;
+    padding: 8px;
     width: 100%;
-    padding: 15px;
-    border: none;
-    outline: none;
-    background: rgba(255, 255, 255, 0.1); /* Полупрозрачный серый фон */
-    border-radius: 8px;
+    max-width: 500px;
     font-size: 1rem;
-    color: #ffffff; /* Белый текст */
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-input:focus {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 204, 128, 0.3) !important;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .form-select {
+    background: rgba(255, 204, 128, 0.2) !important;
+    color: #2d1b00 !important;
+    border: 1px solid rgba(230, 81, 0, 0.4) !important;
+    border-radius: 6px !important;
+    padding: 8px;
     width: 100%;
-    padding: 15px;
-    border: none;
-    outline: none;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
     font-size: 1rem;
-    color: #ffffff;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-select:focus {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 204, 128, 0.3) !important;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -176,25 +187,25 @@ button {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 .form-checkbox input[type="checkbox"] {
     width: 20px;
     height: 20px;
-    accent-color: #e67e22; /* Оранжевый цвет чекбокса */
+    accent-color: #ff8c00 !important; /* Оранжевый цвет чекбокса */
     cursor: pointer;
 }
 
 /* Кнопки */
 .btn-primary {
     width: 100%;
-    padding: 10px;
-    border-radius: 8px;
+    padding: 8px;
+    border-radius: 6px;
     font-size: 1rem;
     font-weight: 600;
-    color: #ffffff;
-    background: #e67e22; /* Оранжевый цвет кнопки */
+    color: #ffffff !important;
+    background: #ff8c00 !important; /* Оранжевый цвет кнопки */
     transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     text-decoration: none;
@@ -202,18 +213,18 @@ button {
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    background: #3498db; /* Синий при наведении */
+    background: #e65100 !important; /* Тёмно-оранжевый при наведении */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
 .btn-secondary {
     width: 100%;
-    padding: 10px;
-    border-radius: 8px;
+    padding: 8px;
+    border-radius: 6px;
     font-size: 1rem;
     font-weight: 600;
-    color: #e0e0e0;
-    background: rgba(255, 255, 255, 0.1);
+    color: #2d1b00 !important;
+    background: rgba(255, 204, 128, 0.2) !important;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     text-align: center;
@@ -221,31 +232,11 @@ button {
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 204, 128, 0.3) !important;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
 /* Ссылки */
-.jewelry-link,
-.orders-link {
-    display: inline-block;
-    color: #e0e0e0;
-    font-size: 1.2rem;
-    font-weight: 500;
-    padding: 10px 20px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    text-decoration: none;
-    margin: 5px;
-}
-
-.jewelry-link:hover,
-.orders-link:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
-}
-
 .link-container {
     text-align: center;
     margin-top: 20px;
@@ -254,11 +245,11 @@ button {
 /* Кнопка VueApp */
 .vueapp-button {
     display: inline-block;
-    padding: 10px 20px;
-    background: #e67e22;
-    color: #ffffff;
+    padding: 8px 12px;
+    background: #ff8c00 !important;
+    color: #ffffff !important;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-weight: 600;
     text-transform: uppercase;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -266,7 +257,7 @@ button {
 }
 
 .vueapp-button:hover {
-    background: #3498db;
+    background: #e65100 !important;
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
@@ -284,19 +275,21 @@ button {
 .table-container {
     width: 100%;
     max-width: 1200px;
-    background: rgba(44, 62, 80, 0.95); /* Темно-синий прозрачный фон */
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    padding: 20px;
+    background: rgba(255, 245, 224, 0.9) !important; /* Полупрозрачный кремовый фон */
+    border-radius: 12px !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+    padding: 24px;
     margin-bottom: 20px;
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 
 .styled-table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    border-radius: 16px;
+    background: rgba(255, 245, 224, 0.9) !important;
+    color: #2d1b00 !important;
+    border-radius: 8px;
     overflow: hidden;
     margin: 0 auto;
     table-layout: fixed;
@@ -304,19 +297,18 @@ button {
 
 .styled-table th,
 .styled-table td {
-    background: rgba(44, 62, 80, 0.95);
-    color: #e0e0e0;
-    padding: 10px;
+    padding: 10px 12px;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(230, 81, 0, 0.3) !important;
+    border-right: 1px solid rgba(230, 81, 0, 0.3) !important;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .styled-table th {
-    background: rgba(52, 152, 219, 0.7); /* Синий фон заголовков */
+    background: rgba(255, 204, 128, 0.3) !important; /* Полупрозрачный персиковый фон */
+    color: #2d1b00 !important;
     font-weight: 600;
 }
 
@@ -330,184 +322,188 @@ button {
 }
 
 .styled-table tbody tr:hover {
-    background: rgba(255, 255, 255, 0.05);
-    cursor: pointer;
+    background: rgba(230, 81, 0, 0.1) !important; /* Легкий оранжевый фон при наведении */
+    transform: translateY(-2px);
 }
 
 .no-data {
     text-align: center;
     font-size: 1.2rem;
     padding: 20px;
-    color: #e0e0e0;
+    color: #2d1b00 !important;
 }
 
-/* Настройка ширины столбцов для таблицы клиентов */
-.clients-table th:nth-child(1),
-.clients-table td:nth-child(1) { /* ID */
+/* Настройка ширины столбцов для таблицы заказов */
+.orders-table th:nth-child(1),
+.orders-table td:nth-child(1) { /* ID */
     width: 5%;
     min-width: 50px;
 }
 
-.clients-table th:nth-child(2),
-.clients-table td:nth-child(2) { /* Имя */
+.orders-table th:nth-child(2),
+.orders-table td:nth-child(2) { /* Имя клиента */
     width: 12%;
     min-width: 100px;
     white-space: normal;
     word-break: break-word;
 }
 
-.clients-table th:nth-child(3),
-.clients-table td:nth-child(3) { /* Фамилия */
-    width: 12%;
-    min-width: 100px;
-    white-space: normal;
-    word-break: break-word;
-}
-
-.clients-table th:nth-child(4),
-.clients-table td:nth-child(4) { /* Телефон */
-    width: 12%;
-    min-width: 100px;
-    white-space: normal;
-    word-break: break-word;
-}
-
-.clients-table th:nth-child(5),
-.clients-table td:nth-child(5) { /* Email */
+.orders-table th:nth-child(3),
+.orders-table td:nth-child(3) { /* Email клиента */
     width: 15%;
     min-width: 120px;
     white-space: normal;
     word-break: break-word;
 }
 
-.clients-table th:nth-child(6),
-.clients-table td:nth-child(6) { /* Адрес */
-    width: 15%;
-    min-width: 120px;
-    white-space: normal;
-    word-break: break-word;
-}
-
-.clients-table th:nth-child(7),
-.clients-table td:nth-child(7) { /* Дата рождения */
+.orders-table th:nth-child(4),
+.orders-table td:nth-child(4) { /* Общая сумма */
     width: 10%;
-    min-width: 100px;
+    min-width: 80px;
 }
 
-.clients-table th:nth-child(8),
-.clients-table td:nth-child(8) { /* Заметки */
+.orders-table th:nth-child(5),
+.orders-table td:nth-child(5) { /* Статус */
+    width: 10%;
+    min-width: 80px;
+}
+
+.orders-table th:nth-child(6),
+.orders-table td:nth-child(6) { /* Метод оплаты */
+    width: 12%;
+    min-width: 100px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.orders-table th:nth-child(7),
+.orders-table td:nth-child(7) { /* Метод доставки */
+    width: 12%;
+    min-width: 100px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.orders-table th:nth-child(8),
+.orders-table td:nth-child(8) { /* Адрес доставки */
     width: 15%;
     min-width: 120px;
     white-space: normal;
     word-break: break-word;
 }
 
-.clients-table th:nth-child(9),
-.clients-table td:nth-child(9) { /* Фото */
+.orders-table th:nth-child(9),
+.orders-table td:nth-child(9) { /* Фото */
     width: 8%;
     min-width: 80px;
 }
 
-.clients-table th:nth-child(10),
-.clients-table td:nth-child(10) { /* Действия */
+.orders-table th:nth-child(10),
+.orders-table td:nth-child(10) { /* Действия */
     width: 12%;
     min-width: 100px;
 }
 
-/* Настройка ширины столбцов для таблицы ремонтов */
-.repairs-table th:nth-child(1),
-.repairs-table td:nth-child(1) { /* ID */
+/* Настройка ширины столбцов для таблицы парфюмов */
+.parfumes-table th:nth-child(1),
+.parfumes-table td:nth-child(1) { /* ID */
     width: 5%;
     min-width: 50px;
 }
 
-.repairs-table th:nth-child(2),
-.repairs-table td:nth-child(2) { /* Тип устройства */
-    width: 10%;
-    min-width: 80px;
-    white-space: normal;
-    word-break: break-word;
-}
-
-.repairs-table th:nth-child(3),
-.repairs-table td:nth-child(3) { /* Бренд */
-    width: 10%;
-    min-width: 80px;
-    white-space: normal;
-    word-break: break-word;
-}
-
-.repairs-table th:nth-child(4),
-.repairs-table td:nth-child(4) { /* Модель */
+.parfumes-table th:nth-child(2),
+.parfumes-table td:nth-child(2) { /* Название */
     width: 15%;
     min-width: 120px;
     white-space: normal;
     word-break: break-word;
 }
 
-.repairs-table th:nth-child(5),
-.repairs-table td:nth-child(5) { /* Описание проблемы */
+.parfumes-table th:nth-child(3),
+.parfumes-table td:nth-child(3) { /* Тип */
+    width: 10%;
+    min-width: 80px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.parfumes-table th:nth-child(4),
+.parfumes-table td:nth-child(4) { /* Объем (мл) */
+    width: 8%;
+    min-width: 80px;
+}
+
+.parfumes-table th:nth-child(5),
+.parfumes-table td:nth-child(5) { /* Цена */
+    width: 10%;
+    min-width: 80px;
+}
+
+.parfumes-table th:nth-child(6),
+.parfumes-table td:nth-child(6) { /* В наличии */
+    width: 8%;
+    min-width: 80px;
+}
+
+.parfumes-table th:nth-child(7),
+.parfumes-table td:nth-child(7) { /* Описание */
     width: 20%;
     min-width: 150px;
     white-space: normal;
     word-break: break-word;
 }
 
-.repairs-table th:nth-child(6),
-.repairs-table td:nth-child(6) { /* Стоимость ремонта */
+.parfumes-table th:nth-child(8),
+.parfumes-table td:nth-child(8) { /* Гендер */
     width: 10%;
     min-width: 80px;
+    white-space: normal;
+    word-break: break-word;
 }
 
-.repairs-table th:nth-child(7),
-.repairs-table td:nth-child(7) { /* Статус */
-    width: 10%;
-    min-width: 80px;
-}
-
-.repairs-table th:nth-child(8),
-.repairs-table td:nth-child(8) { /* Дата */
-    width: 10%;
-    min-width: 80px;
-}
-
-.repairs-table th:nth-child(9),
-.repairs-table td:nth-child(9) { /* Фото */
+.parfumes-table th:nth-child(9),
+.parfumes-table td:nth-child(9) { /* Фото */
     width: 8%;
     min-width: 80px;
 }
 
-.repairs-table th:nth-child(10),
-.repairs-table td:nth-child(10) { /* Действия */
+.parfumes-table th:nth-child(10),
+.parfumes-table td:nth-child(10) { /* Действия */
     width: 12%;
     min-width: 100px;
 }
 
 .product-image {
-    max-width: 60px;
-    max-height: 60px;
-    border-radius: 8px;
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
     object-fit: cover;
     vertical-align: middle;
-    border: 2px solid #3498db; /* Синяя граница */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border: 2px solid #fff5e0 !important; /* Кремовый бордер */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-image:hover {
+    border-color: #ffab40 !important; /* Яркий оранжевый при наведении */
+    transform: scale(1.03);
 }
 
 /* Статусы */
 .status {
     display: inline-block;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 0.875rem;
     font-weight: 600;
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 .status.available {
-    background: #e67e22; /* Оранжевый для активных статусов */
+    background: #2e7d32 !important; /* Тёмно-зелёный */
 }
 
 .status.unavailable {
-    background: #7f8c8d; /* Серый для неактивных статусов */
+    background: #d32f2f !important; /* Тёмно-красный */
 }
 
 /* Кнопки действий */
@@ -518,40 +514,35 @@ button {
 }
 
 .action-btn {
-    background: none;
-    border: none;
-    color: #e0e0e0;
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.view-icon,
+.edit-icon,
+.delete-icon {
+    color: #2d1b00 !important;
     font-size: 1rem;
-    cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.action-btn:hover {
-    transform: scale(1.2);
-}
-
-.view-icon {
-    color: #e0e0e0;
 }
 
 .view-icon:hover {
-    color: #3498db;
-}
-
-.edit-icon {
-    color: #e0e0e0;
+    background: #ff8c00 !important;
+    color: #ffffff !important;
+    transform: scale(1.1);
 }
 
 .edit-icon:hover {
-    color: #3498db;
-}
-
-.delete-icon {
-    color: #e0e0e0;
+    background: #ff8c00 !important;
+    color: #ffffff !important;
+    transform: scale(1.1);
 }
 
 .delete-icon:hover {
-    color: #e67e22;
+    background: #e65100 !important;
+    color: #ffffff !important;
+    transform: scale(1.1);
 }
 
 /* Контейнер продукта */
@@ -562,8 +553,9 @@ button {
 }
 
 .product-image-container .product-image {
-    max-width: 150px;
-    max-height: 150px;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
 }
 
 /* Пагинация */
@@ -571,48 +563,48 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    gap: 10px;
+    margin-top: 24px;
+    gap: 8px;
     padding: 20px 0;
     z-index: 10;
 }
 
 .pagination a {
-    background: #e67e22;
-    color: #ffffff;
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 8px;
+    padding: 8px 12px;
+    border: 1px solid rgba(230, 81, 0, 0.4) !important;
+    border-radius: 6px;
+    color: #e65100 !important; /* Тёмно-оранжевый */
     text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
 }
 
 .pagination a.active {
-    background: #3498db;
-    color: #ffffff;
+    background: #ff8c00 !important;
+    color: #ffffff !important;
+    border-color: #ff8c00 !important;
 }
 
 .pagination a:hover:not(.active) {
-    background: #3498db;
+    background: #ff8c00 !important;
+    color: #ffffff !important;
+    border-color: #ff8c00 !important;
     transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
 .pagination .dots {
-    color: #e0e0e0;
+    color: #2d1b00 !important;
     pointer-events: none;
 }
 
 /* Стили для select */
 select.form-input {
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    background: rgba(255, 204, 128, 0.2) !important;
+    color: #2d1b00 !important;
 }
 
 option {
-    background: #2c3e50;
-    color: #ffffff;
+    background: rgba(255, 245, 224, 0.9) !important;
+    color: #2d1b00 !important;
 }
 
 /* Анимация появления */
@@ -632,23 +624,23 @@ option {
 }
 
 /* Адаптивность */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
     .app-container {
-        padding: 15px;
+        padding: 16px !important;
     }
 
     .form-container {
-        padding: 15px;
+        padding: 16px !important;
     }
 
     .product-image {
-        max-width: 40px;
-        max-height: 40px;
+        width: 40px !important;
+        height: 40px !important;
     }
 
     .product-image-container .product-image {
-        max-width: 120px;
-        max-height: 120px;
+        width: 140px !important;
+        height: 140px !important;
     }
 
     .logo {
@@ -657,15 +649,24 @@ option {
 
     .styled-table th,
     .styled-table td {
-        padding: 8px;
-        font-size: 0.9rem;
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
     }
 
+    .orders-table th,
+    .orders-table td,
+    .parfumes-table th,
+    .parfumes-table td,
     .clients-table th,
     .clients-table td,
     .repairs-table th,
     .repairs-table td {
         min-width: 60px;
+    }
+
+    .page-title {
+        font-size: 1.5rem !important;
+        padding: 8px !important;
     }
 }
 

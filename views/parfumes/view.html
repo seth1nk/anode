@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Просмотр парфюма</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="content">
+        <div class="app-container">
+            <h1 class="page-title">Просмотр парфюма</h1>
+            <div class="container">
+                <div class="product-info">
+                    <div class="product-image-container" id="product-image"></div>
+                    <div class="info-container">
+                        <p><strong>Название:</strong> <span id="name"></span></p>
+                        <p><strong>Тип:</strong> <span id="type"></span></p>
+                        <p><strong>Объем (мл):</strong> <span id="volume_ml"></span></p>
+                        <p><strong>Цена:</strong> <span id="price"></span></p>
+                        <p><strong>В наличии:</strong> <span id="in_stock"></span></p>
+                        <p><strong>Описание:</strong> <span id="description"></span></p>
+                        <p><strong>Гендер:</strong> <span id="gender"></span></p>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <a href="/parfumes/index.html" class="btn-secondary">Вернуться к списку</a>
+                    <a id="edit-link" class="btn-primary">Редактировать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/layout.js"></script>
+    <script src="/js/header.js"></script>
+    <script>
+        async function loadParfumeData() {
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const parfumeId = urlParams.get('id');
+                if (!parfumeId) {
+                    throw new Error('ID парфюма не указан');
+                }
+                const response = await fetch(`/api/view-parfume/${parfumeId}`);
+                if (!response.ok) {
+                    throw new Error(`Ошибка сервера: ${response.status} ${response.statusText}`);
+                }
+                const parfume = await response.json();
+                document.getElementById('product-image').innerHTML = parfume.photo ? `<img class="product-image" src="${parfume.photo.replace('/img/', '/images/')}" alt="Parfume Photo">` : 'Нет изображения';
+                document.getElementById('name').textContent = parfume.name || 'N/A';
+                document.getElementById('type').textContent = parfume.type || 'N/A';
+                document.getElementById('volume_ml').textContent = parfume.volume_ml || 'N/A';
+                document.getElementById('price').textContent = parfume.price || 'N/A';
+                document.getElementById('in_stock').textContent = parfume.in_stock ? 'Да' : 'Нет';
+                document.getElementById('description').textContent = parfume.description || 'N/A';
+                document.getElementById('gender').textContent = parfume.gender || 'N/A';
+                document.getElementById('edit-link').href = `/parfumes/edit.html?id=${parfume.id}`;
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+                document.getElementById('content').innerHTML = `<p>Ошибка загрузки данных: ${error.message}</p>`;
+            }
+        }
+        window.onload = loadParfumeData;
+    </script>
+</body>
+</html>

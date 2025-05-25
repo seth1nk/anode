@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Просмотр заказа</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="content">
+        <div class="app-container">
+            <h1 class="page-title">Просмотр заказа</h1>
+            <div class="container">
+                <div class="product-info">
+                    <div class="product-image-container" id="product-image"></div>
+                    <div class="info-container">
+                        <p><strong>Имя клиента:</strong> <span id="customer_name"></span></p>
+                        <p><strong>Email клиента:</strong> <span id="customer_email"></span></p>
+                        <p><strong>Общая сумма:</strong> <span id="total_amount"></span></p>
+                        <p><strong>Статус:</strong> <span id="status"></span></p>
+                        <p><strong>Метод оплаты:</strong> <span id="payment_method"></span></p>
+                        <p><strong>Метод доставки:</strong> <span id="delivery_method"></span></p>
+                        <p><strong>Адрес доставки:</strong> <span id="shipping_address"></span></p>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <a href="/orders/index.html" class="btn-secondary">Вернуться к списку</a>
+                    <a id="edit-link" class="btn-primary">Редактировать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/layout.js"></script>
+    <script src="/js/header.js"></script>
+    <script>
+        async function loadOrderData() {
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const orderId = urlParams.get('id');
+                if (!orderId) {
+                    throw new Error('ID заказа не указан');
+                }
+                const response = await fetch(`/api/view-order/${orderId}`);
+                if (!response.ok) {
+                    throw new Error(`Ошибка сервера: ${response.status} ${response.statusText}`);
+                }
+                const order = await response.json();
+                document.getElementById('product-image').innerHTML = order.photo ? `<img class="product-image" src="${order.photo.replace('/img/', '/images/')}" alt="Order Photo">` : 'Нет изображения';
+                document.getElementById('customer_name').textContent = order.customer_name || 'N/A';
+                document.getElementById('customer_email').textContent = order.customer_email || 'N/A';
+                document.getElementById('total_amount').textContent = order.total_amount || 'N/A';
+                document.getElementById('status').textContent = order.status || 'N/A';
+                document.getElementById('payment_method').textContent = order.payment_method || 'N/A';
+                document.getElementById('delivery_method').textContent = order.delivery_method || 'N/A';
+                document.getElementById('shipping_address').textContent = order.shipping_address || 'N/A';
+                document.getElementById('edit-link').href = `/orders/edit.html?id=${order.id}`;
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+                document.getElementById('content').innerHTML = `<p>Ошибка загрузки данных: ${error.message}</p>`;
+            }
+        }
+        window.onload = loadOrderData;
+    </script>
+</body>
+</html>

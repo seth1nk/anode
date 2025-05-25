@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать парфюм</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="content">
+        <div class="app-container">
+            <h1 class="page-title">Редактировать парфюм</h1>
+            <form class="form-container" id="edit-form" method="POST" enctype="multipart/form-data">
+                <div class="input-group">
+                    <label for="name">Название:</label>
+                    <input id="name" class="form-input" type="text" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="type">Тип:</label>
+                    <input id="type" class="form-input" type="text" name="type" required>
+                </div>
+                <div class="input-group">
+                    <label for="volume_ml">Объем (мл):</label>
+                    <input id="volume_ml" class="form-input" type="number" name="volume_ml" required>
+                </div>
+                <div class="input-group">
+                    <label for="price">Цена:</label>
+                    <input id="price" class="form-input" type="number" step="0.01" name="price" required>
+                </div>
+                <div class="input-group">
+                    <label for="in_stock">В наличии:</label>
+                    <input id="in_stock" class="form-input" type="checkbox" name="in_stock">
+                </div>
+                <div class="input-group">
+                    <label for="description">Описание:</label>
+                    <textarea id="description" class="form-input" name="description"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="gender">Гендер:</label>
+                    <input id="gender" class="form-input" type="text" name="gender">
+                </div>
+                <div class="input-group">
+                    <label for="photo">Фото:</label>
+                    <input id="photo" class="form-input" type="file" name="photo" accept="image/*">
+                </div>
+                <div class="action-buttons">
+                    <button class="btn-primary" type="submit">Сохранить изменения</button>
+                    <a href="/parfumes/index.html" class="btn-secondary">Вернуться к списку</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/js/layout.js"></script>
+    <script src="/js/header.js"></script>
+    <script>
+        async function loadParfumeData() {
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const parfumeId = urlParams.get('id');
+                if (!parfumeId) {
+                    throw new Error('ID парфюма не указан');
+                }
+                document.getElementById('edit-form').action = `/edit-parfume/${parfumeId}`;
+                const response = await fetch(`/api/view-parfume/${parfumeId}`);
+                if (!response.ok) {
+                    throw new Error(`Ошибка сервера: ${response.status} ${response.statusText}`);
+                }
+                const parfume = await response.json();
+                document.getElementById('name').value = parfume.name || '';
+                document.getElementById('type').value = parfume.type || '';
+                document.getElementById('volume_ml').value = parfume.volume_ml || '';
+                document.getElementById('price').value = parfume.price || '';
+                document.getElementById('in_stock').checked = parfume.in_stock || false;
+                document.getElementById('description').value = parfume.description || '';
+                document.getElementById('gender').value = parfume.gender || '';
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+                document.getElementById('content').innerHTML = `<p>Ошибка загрузки данных: ${error.message}</p>`;
+            }
+        }
+        window.onload = loadParfumeData;
+    </script>
+</body>
+</html>
